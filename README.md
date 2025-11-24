@@ -112,12 +112,12 @@ search_task:
   case_name: "查询ALKKK"
   description: "查询ALKKK，查看各种ALLI是否存在"
   steps:
-    - navigate: anliku_page
+    - navigate: AKL_page
     - click: Path(ALKKK.查询.输入框)
     - wait: 1000
     - input:
         selector: Path(ALKKK.查询.输入框)
-        value: CZtest06
+        value: SStest006
     - take_screenshot: "search_task01.png"
 ```
 
@@ -137,7 +137,7 @@ search_task:
 search_task:
   case_name: "查询ALKKK"
   steps:
-    - navigate: anliku_page
+    - navigate: AKL_page
     - click: Path(ALKKK.查询.输入框)
     - input:
         selector: Path(ALKKK.查询.输入框)
@@ -153,19 +153,19 @@ search_task:
   case_name: "查询ALKKK"
   description: "查询ALKKK，查看各种ALLI是否存在"
   steps:
-    - navigate: anliku_page
+    - navigate: AKL_page
     - click: Path(ALKKK.查询.输入框)
     - input:
         selector: Path(ALKKK.查询.输入框)
         value:
-          - CZtest06
+          - SStest006
           - test001
     - navigate: test_task_page
     - wait: 1000
 
   # 为每个循环值定义额外的步骤
   loop_steps:
-    CZtest06:
+    SStest006:
       - press_key: enter
       - wait: 1000
       - take_screenshot: "test-results/screenshot/search_task_test06.png"
@@ -357,7 +357,7 @@ test_case:
 - assert:
     selector: Path(ALKKK.列表.ALLI名称-首个)
     expected: 包含
-    value: CZtest06
+    value: SStest006
 
 # Enter键后自动等待数据刷新
 - press_key: Enter
@@ -366,7 +366,7 @@ test_case:
 # 输入后自动等待事件处理
 - input:
     selector: Path(ALKKK.查询.输入框)
-    value: CZtest06
+    value: SStest006
 # 自动等待输入事件处理完成
 ```
 
@@ -416,4 +416,5 @@ self.executor.configure_smart_wait(timeout=5000)
 - 新增功能不会影响现有功能
 
 - 支持渐进式升级，可以逐步使用新功能
+
 
