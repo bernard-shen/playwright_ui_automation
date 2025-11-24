@@ -1,0 +1,24 @@
+xpath整理: test
+
+通用:
+  文本: //div[text()="{}"]
+  按钮: //button//span[text()="{}"]
+  输入框: //input[@placeholder="{}"]
+
+目录:
+  一级菜单: //ul[@role="menubar"]//span[text()="{}"]
+  二级菜单: //li[@role="menuitem"]//div[text()="{}"]
+
+FAN库:
+  查询:
+    输入框: //input[@placeholder="搜索*****名称"]
+  左侧树:
+    名称: //div[@id="pane-JJJ"]//ul[@role="menubar"]//div[text()="{}"]
+    空空收起-第一个: (//div[@id="pane-JJJ"]//img[@class="el-image__inner"])[1]
+    空空收起-按名称: //div[@id="pane-JJJ"]//div[text()="{}"]/preceding-sibling::div//img[@class="el-image__inner"]
+
+  列表:
+    方案勾选-首个: (//div[@id="pane-JJJ"]//label[contains(@class, "el-checkbox")])[1]
+    方案勾选-按名称: //div[@id="pane-JJJ"]//div[text()="{}"]/preceding-sibling::label
+    方案勾选-多个: (//div[@id="pane-JJJ"]//label[contains(@class, "el-checkbox")])[{}]
+    方案勾选已选择: //div[contains(text(),"已选择")]

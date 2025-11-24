@@ -1,0 +1,80 @@
+# test01: ***查询-模糊查询正确
+msfs_search_02:
+  case_name: "***查询"
+  description: "***查询-模糊查询正确"
+  steps:
+    - navigate: anliku_page
+    - click: Path(***.查询.输入框)
+    - input:
+        selector: Path(***.查询.输入框)
+        value: CZtest
+    - press_key: Enter
+    - take_screenshot: "test-results/screenshot/anliku_search_CZtest.png"
+    - assert:
+        selector: Path(***.列表.***名称-首个)
+        expected: 包含
+        value: CZtest
+
+# test02: ***导入-已导入的***不能重复导入
+msfs_import_03:
+  case_name: "***导入"
+  description: "***导入-已导入的***不能重复导入"
+  steps:
+    - navigate: anliku_page
+    - click: Path(***.列表.按钮-导入***)
+    - wait: 1000
+    - click: Path(***.列表.导入弹窗-***-按名称).f(test001)
+    - click: Path(***.列表.导入弹窗-****-按名称).f(test002)
+    - click: Path(***.列表.导入弹窗-**-按名称).f(test003)
+    - hover: Path(***.列表.导入弹窗-**-勾选-首个)
+    - wait: 1000
+    - take_screenshot: "test-results/screenshot/anliku_import01.png"
+    - assert:
+        selector: Path(***.列表.导入弹窗-sadfasdf-hover)
+        expected: 包含
+        value: 已被导入的***，不可重复导入
+
+# test03: ***导入-新***导入成功
+msfs_import_05:
+  case_name: "***导入成功"
+  description: "***导入-新***导入成功"
+  steps:
+    - navigate: anliku_page
+    - click: Path(***.列表.按钮-导入***)
+    - wait: 2000
+    - click: Path(***.列表.导入弹窗-%$^-按名称).f(test001)
+    - click: Path(***.列表.导入弹窗-HASD-按名称).f(test00222)
+    - click: Path(***.列表.导入弹窗-ASDS-按名称).f(SPF0617)
+    - click: Path(***.列表.导入弹窗-**-勾选-首个)
+    - wait: 200
+    - click: Path(***.列表.导入弹窗-确定)
+    - wait: 100
+    - take_screenshot: "test-results/screenshot/anliku_import03.png"
+
+    - wait: 35000
+
+    - navigate: anliku_page
+    - click: Path(***.查询.输入框)
+    - input:
+        selector: Path(***.查询.输入框)
+        value: SHTest02
+    - press_key: Enter
+    - wait: 500
+    - take_screenshot: "test-results/screenshot/AGSHDJA_import_success.png"
+    - assert:
+        selector: Path(***.列表.***状态-按名称).f(ASDASD-YTAUYDY-wz1)
+        expected: 包含
+        value: 待使用
+
+
+
+
+
+
+
+
+
+
+
+
+
