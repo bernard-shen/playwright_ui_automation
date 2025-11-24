@@ -8,7 +8,7 @@
 
 -   **YAML 驱动测试**: 将测试步骤、操作和数据定义在 YAML 文件中，非开发人员也能轻松编写和维护自动化用例。
 -   **数据驱动**: 支持在 YAML 的 `input` 操作中使用列表，`BaseExecutor` 会自动为每个数据点循环执行完整的测试用例。
--   **页面元素分离**: 使用独立的 YAML 文件 (`adts_locations.yaml`) 集中管理页面元素的定位器 (Locators)，提高可维护性。
+-   **页面元素分离**: 使用独立的 YAML 文件 (`ABCD_locations.yaml`) 集中管理页面元素的定位器 (Locators)，提高可维护性。
 -   **自动报告**: 测试执行后，自动生成并打开 Allure Report，提供详细、可视化的测试结果。
 -   **容器化支持**: 提供 `Dockerfile`，可轻松在容器环境中构建和运行自动化测试，便于集成到 CI/CD 流程。
 -   **高度封装**: `BasePage` 封装了 Playwright 的常用操作，`BaseExecutor` 负责解析和执行，让测试用例脚本更简洁。
@@ -22,7 +22,7 @@
 ```
 ui_autotest_new/
 ├── base/                   # 核心封装（BaseExecutor, BasePage, BaseAssert）
-├── config/                 # 配置文件（pytest.ini, web_ui.conf, adts_locations.yaml）
+├── config/                 # 配置文件（pytest.ini, web_ui.conf, ABCD_locations.yaml）
 ├── test_cases/             # Pytest 测试用例
 ├── test_data/              # YAML 测试数据和步骤
 ├── test-results/           # 测试输出目录
@@ -123,7 +123,7 @@ search_task:
 
 ### 2. 元素定位 `Path()`
 
--   **`Path(页面.模块.元素)`**: 这种语法用于从 `config/adts_locations.yaml` 文件中查找对应的 CSS 或 XPath 选择器。
+-   **`Path(页面.模块.元素)`**: 这种语法用于从 `config/ABCD_locations.yaml` 文件中查找对应的 CSS 或 XPath 选择器。
 -   **动态传参**: 使用 `.f()` 方法可以向选择器动态传递参数，例如：
     ```yaml
     - click: Path(ALKKK.左侧树.名称).f(SPACENAME1)
@@ -210,7 +210,7 @@ docker run --rm -v "$(pwd)/test-results:/app/test-results" ui-autotest python ru
 ## ⚙️ 配置文件
 
 -   `config/web_ui.conf`: 配置浏览器类型（chromium, firefox, webkit）、是否无头模式 (`is_headed`)、执行速度 (`slowmo`) 和基础 URL 等。
--   `config/adts_locations.yaml`: 集中管理所有页面的元素定位器。
+-   `config/ABCD_locations.yaml`: 集中管理所有页面的元素定位器。
 -   `config/pytest.ini`: pytest 的配置文件，用于定义 `addopts`（如 Allure 报告目录）和 `markers`。
 
 ---
@@ -416,3 +416,4 @@ self.executor.configure_smart_wait(timeout=5000)
 - 新增功能不会影响现有功能
 
 - 支持渐进式升级，可以逐步使用新功能
+
