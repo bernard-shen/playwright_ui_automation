@@ -109,14 +109,14 @@ python run_web_ui_test.py -k "search"
 
 ```yaml
 search_task:
-  case_name: "查询案例库"
-  description: "查询案例库，查看各种案例是否存在"
+  case_name: "查询ALKKK"
+  description: "查询ALKKK，查看各种ALLI是否存在"
   steps:
     - navigate: anliku_page
-    - click: Path(案例库.查询.输入框)
+    - click: Path(ALKKK.查询.输入框)
     - wait: 1000
     - input:
-        selector: Path(案例库.查询.输入框)
+        selector: Path(ALKKK.查询.输入框)
         value: CZtest06
     - take_screenshot: "search_task01.png"
 ```
@@ -126,7 +126,7 @@ search_task:
 -   **`Path(页面.模块.元素)`**: 这种语法用于从 `config/adts_locations.yaml` 文件中查找对应的 CSS 或 XPath 选择器。
 -   **动态传参**: 使用 `.f()` 方法可以向选择器动态传递参数，例如：
     ```yaml
-    - click: Path(案例库.左侧树.名称).f(KIRA_3C23011203)
+    - click: Path(ALKKK.左侧树.名称).f(SPACENAME1)
     ```
 
 ### 3. 数据驱动测试
@@ -135,12 +135,12 @@ search_task:
 
 ```yaml
 search_task:
-  case_name: "查询案例库"
+  case_name: "查询ALKKK"
   steps:
     - navigate: anliku_page
-    - click: Path(案例库.查询.输入框)
+    - click: Path(ALKKK.查询.输入框)
     - input:
-        selector: Path(案例库.查询.输入框)
+        selector: Path(ALKKK.查询.输入框)
         value:
           - abc123456      # 第一次循环的值
           - abc12345678    # 第二次循环的值
@@ -150,13 +150,13 @@ search_task:
 当输入不同值，后续的操作和预期不同时，可以使用loop_step来为每个输入值定义后续操作；当然如果你不喜欢复杂的功能用例，也可以把循环拆成单个用例；
 ```yaml
 search_task:
-  case_name: "查询案例库"
-  description: "查询案例库，查看各种案例是否存在"
+  case_name: "查询ALKKK"
+  description: "查询ALKKK，查看各种ALLI是否存在"
   steps:
     - navigate: anliku_page
-    - click: Path(案例库.查询.输入框)
+    - click: Path(ALKKK.查询.输入框)
     - input:
-        selector: Path(案例库.查询.输入框)
+        selector: Path(ALKKK.查询.输入框)
         value:
           - CZtest06
           - test001
@@ -168,11 +168,11 @@ search_task:
     CZtest06:
       - press_key: enter
       - wait: 1000
-      - take_screenshot: "test-results/screenshot/search_task_CZtest06.png"
+      - take_screenshot: "test-results/screenshot/search_task_test06.png"
       - assert:
-          selector: Path(案例库.列表.案例名称-首个)
+          selector: Path(ALKKK.列表.ALLI名称-首个)
           expected: 包含
-          value: CZtest06
+          value: test06
     test001:
       - press_key: enter
       - wait: 1000
@@ -355,7 +355,7 @@ test_case:
 ```yaml
 # 断言前自动等待页面稳定
 - assert:
-    selector: Path(案例库.列表.案例名称-首个)
+    selector: Path(ALKKK.列表.ALLI名称-首个)
     expected: 包含
     value: CZtest06
 
@@ -365,7 +365,7 @@ test_case:
 
 # 输入后自动等待事件处理
 - input:
-    selector: Path(案例库.查询.输入框)
+    selector: Path(ALKKK.查询.输入框)
     value: CZtest06
 # 自动等待输入事件处理完成
 ```
@@ -414,4 +414,5 @@ self.executor.configure_smart_wait(timeout=5000)
 
 - 保持了与现有测试用例的完全兼容性
 - 新增功能不会影响现有功能
+
 - 支持渐进式升级，可以逐步使用新功能
